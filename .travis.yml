@@ -7,7 +7,8 @@ before_install:
   - brew install mysql
   - mysql.server start
   - brew install ant
-  - git clone https://github.com/MobilityFirst/GNS
+  - git config --global http.postBuffer 1048576000
+  - GIT_CURL_VERBOSE=1 git clone --depth=1 https://github.com/MobilityFirst/GNS
   - cd GNS
   - ant
   - ./bin/gpServer.sh start all
