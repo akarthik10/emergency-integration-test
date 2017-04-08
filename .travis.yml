@@ -24,5 +24,6 @@ before_install:
   - composer install
   - php artisan migrate
   - php artisan serve &
+  - cd ..
 
 script: ./build.sh
