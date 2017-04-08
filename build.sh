@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-pip install selenium
+sudo pip install selenium
 
 python test.py &
 
