@@ -2,7 +2,7 @@ language: objective-c
 osx_image: xcode8.2
 before_install:
   - brew remove git
-  - brew remove curl
+#  - brew remove curl
   - brew install openssl
   - brew install --with-openssl curl
   - brew install --with-brewed-curl --with-brewed-openssl git
