@@ -1,0 +1,53 @@
+[  
+   {  
+      "name":"age",
+      "title":"Age",
+      "selectCount":1,
+      "selectType":"range",
+      "type":"range",
+      "min":10,
+      "max":100,
+      "steps":1,
+      "options":[  
+         {  
+            "name":"minimum",
+            "title":"Minimum",
+            "value":"",
+            "type":"number"
+         },
+         {  
+            "name":"maximum",
+            "title":"Maximum",
+            "value":"",
+            "type":"number"
+         }
+      ]
+   },
+   {  
+      "name":"special",
+      "title":"Special Needs",
+      "selectCount":3,
+      "selectType":"bool",
+      "type":"bool",
+      "options":[  
+         {  
+            "name":"wheelchair",
+            "title":"Wheelchair-Bound",
+            "value":"wheelchair",
+            "type":"bool"
+         },
+         {  
+            "name":"visuallyImpaired",
+            "title":"Visually Impaired",
+            "value":"visuallyImpaired",
+            "type":"bool"
+         },
+         {  
+            "name":"hearingImpaired",
+            "title":"Hearing Impaired",
+            "value":"hearingImpaired",
+            "type":"bool"
+         }
+      ]
+   }
+]

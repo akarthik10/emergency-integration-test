@@ -4,8 +4,6 @@ before_install:
   - brew update
   - brew install mongodb
   - brew services start mongodb
-  - brew install mysql
-  - mysql.server start
   - brew install ant
   - git config --global http.postBuffer 1048576000
   - GIT_CURL_VERBOSE=1 git clone --depth=1 https://github.com/MobilityFirst/GNS
@@ -13,4 +11,17 @@ before_install:
   - ant
   - ./bin/gpServer.sh start all
   - cd ..
+  - brew install mysql
+  - mysql.server start
+  - mysql -u root -p -e "CREATE USER 'emportalUser'@'localhost' IDENTIFIED BY 'some_pass';"
+  - mysql -u root -p -e "GRANT ALL PRIVILEGES ON . TO 'emportalUser'@'localhost' WITH GRANT OPTION;"
+  - mysql -u root -p -e "create database emportal;"
+  - brew install php
+  - brew install composer
+  - cd em_portal
+  - composer update
+  - composer install
+  - php artisan migrate
+  - php artisan serve &
+
 script: ./build.sh

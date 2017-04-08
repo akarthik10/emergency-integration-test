@@ -1,0 +1,11 @@
+/node_modules
+/public/storage
+/storage/*.key
+/vendor
+/.idea
+/StuffToDo/*
+Homestead.json
+Homestead.yaml
+.production_env
+.DS_Store
+

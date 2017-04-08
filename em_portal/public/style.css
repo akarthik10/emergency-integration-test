@@ -1,0 +1,78 @@
+#spotter-reports-table{
+	min-height: 680px;
+}
+html, body{
+	height: 100%;
+}
+.wrapper {
+	position: relative;
+}
+.overlay {
+	width: 450px;
+	height: 95%;
+	position: absolute; 
+	top: 110px; 
+	left: 10px; 
+	z-index: 3;
+	overflow-y: auto;
+	background-color: white;
+	box-shadow: 0 0 5px black;
+}
+#video{
+	object-fit: initial;
+}
+.video{
+	padding: 5px;
+	display: inline-block;
+}
+td .link:hover {
+	text-decoration: underline;
+}
+.valign {
+	vertical-align: middle;
+}
+img {
+	image-orientation: from-image;
+}
+.icon {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.small_icon img {
+	width: 24px;
+	height: 24px;
+}
+.report_date {
+	color: gray;
+	font-size: small;
+}
+h1 a {
+	padding: 5px;
+	text-decoration: none;
+	color: black;
+}
+.infowindow {
+	text-align: left;
+	/*max-width: 350px;
+	max-height: 350px;*/
+}
+.info_images img {
+	/*display: inline-block;*/
+	max-width: 250px;
+	max-height: 250px;
+	/*margin: 5px;*/
+	padding-bottom: 5px;
+}
+.info_videos {
+	/*display: inline-block;*/
+	/*margin: 5px;*/
+	padding-bottom: 5px;
+}
+.info_videos video {
+	max-width: 250px;
+	max-height: 250px;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip{
+	z-index: 33
+}
