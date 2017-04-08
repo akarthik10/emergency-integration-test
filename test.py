@@ -19,21 +19,25 @@ def type_into_field(name, value):
 driver = webdriver.Firefox(executable_path=r'bin/geckodriver')
 driver.get("http://localhost:8000")
 assert 'Register' in driver.page_source
+print("Loaded website")
 driver.implicitly_wait(5)
 
 driver.find_element_by_link_text("Register").click()
-
+print("Clicked register")
 type_into_field("Name", "Test User")
 random = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(10)])
 type_into_field("E-Mail Address", random + "@" + random + ".com")
 type_into_field("Password", random)
 type_into_field("Confirm Password", random)
 driver.find_element_by_xpath("//button[contains(.,'Register')]").click()
-
+print("Sending register data, clicked form submit")
 time.sleep(5)
 type_into_field("Title", "Test notification")
 type_into_field("Body", "Test notification body")
+print("Filling notification details")
 driver.execute_script(polygon_script)
+print("Polygon script injection")
 driver.find_element_by_xpath("//button[contains(.,'Send')]").click()
+print("Notification sent")
 time.sleep(120)
 driver.close()
