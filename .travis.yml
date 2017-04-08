@@ -1,9 +1,12 @@
 language: objective-c
 osx_image: xcode8.2
 before_install:
+  - brew update
   - brew install mongodb
+  - brew services start mongodb
   - brew install mysql
   - mysql.server start
+  - brew install ant
   - git clone https://github.com/MobilityFirst/GNS
   - cd GNS
   - ant
