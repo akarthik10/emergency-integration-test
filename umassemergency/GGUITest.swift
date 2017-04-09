@@ -19,13 +19,24 @@ extension XCUIElement {
             return
         }
         
-        self.tap()
+        self.forceTapElement()
         
         let deleteString = stringValue.characters.map { _ in XCUIKeyboardKeyDelete }.joined(separator: "")
         
         self.typeText(deleteString)
         self.typeText(text)
     }
+    
+    func forceTapElement() {
+        if self.isHittable {
+            self.tap()
+        }
+        else {
+            let coordinate: XCUICoordinate = self.coordinate(withNormalizedOffset: CGVector(dx:0.0, dy:0.0))
+            coordinate.tap()
+        }
+    }
+    
 }
 
 class GGUITest: XCTestCase {
@@ -75,11 +86,11 @@ class GGUITest: XCTestCase {
         gnsHostStaticText.clearAndEnterText(text: "localhost")
         
         let gnsPortStaticText = tablesQuery.textFields["gnsPort"]
-        gnsPortStaticText.swipeUp()
+        //gnsPortStaticText.swipeUp()
         gnsPortStaticText.clearAndEnterText(text: "25303")
         
-        let backendStaticText = tablesQuery.textFields["backendURL"]
-        backendStaticText.swipeUp()
+        let backendStaticText = app.textFields["backendURL"]
+        //backendStaticText.swipeUp()
         backendStaticText.clearAndEnterText(text: "http://localhost:8000/backend")
         
         tablesQuery.staticTexts["Reload GNS Data"].tap()
