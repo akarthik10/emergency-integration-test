@@ -29,3 +29,5 @@ before_install:
   - cd ..
 
 script: ./build.sh
+after_script:
+  - cat ~/Library/Logs/CoreSimulator/86B2CA7C-0247-4257-BFEA-8035084AF2CF/system.log
