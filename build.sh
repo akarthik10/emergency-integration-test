@@ -4,10 +4,9 @@
 
 cd umassemergency
 pod install
-xcodebuild -configuration Debug -workspace UMassEmergency.xcworkspace -scheme UMassEmergency -sdk iphonesimulator -destination platform="iOS Simulator",OS=10.2,name="iPhone 7 Plus" build test SYMROOT=$(PWD)/build &
+cd ..
 
-sleep 550
+touch iosoutput.log
+./selenium.sh &
 
-sudo pip install selenium
-
-python test.py &
+xcodebuild -configuration Debug -workspace umassemergency/UMassEmergency.xcworkspace -scheme UMassEmergency -sdk iphonesimulator -destination platform="iOS Simulator",OS=10.2,name="iPhone 7 Plus" build test SYMROOT=$(PWD)/build | tee iosoutput.log
