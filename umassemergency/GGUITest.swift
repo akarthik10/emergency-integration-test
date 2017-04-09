@@ -8,6 +8,26 @@
 
 import XCTest
 
+extension XCUIElement {
+    /**
+     Removes any current text in the field before typing in the new value
+     - Parameter text: the text to enter into the field
+     */
+    func clearAndEnterText(text: String) -> Void {
+        guard let stringValue = self.value as? String else {
+            XCTFail("Tried to clear and enter text into a non string value")
+            return
+        }
+        
+        self.tap()
+        
+        let deleteString = stringValue.characters.map { _ in XCUIKeyboardKeyDelete }.joined(separator: "")
+        
+        self.typeText(deleteString)
+        self.typeText(text)
+    }
+}
+
 class GGUITest: XCTestCase {
         
     let app = XCUIApplication()
@@ -34,6 +54,40 @@ class GGUITest: XCTestCase {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         app.buttons["location"].tap();
+        
+        
+        
+        app.navigationBars["UMass Emergency"].buttons["info"].tap()
+        app.navigationBars["About 1.0 (24)"].buttons["Normal"].tap()
+        
+        let tablesQuery2 = app.tables
+        let tablesQuery = tablesQuery2
+        tablesQuery.staticTexts["Developer Settings"].tap()
+        tablesQuery.staticTexts["GNS"].tap()
+        
+        let textField = tablesQuery2.cells.containing(.button, identifier:"Done").children(matching: .textField).element
+        textField.tap()
+        
+        textField.clearAndEnterText(text: "24303")
+        
+        let textField2 = tablesQuery2.children(matching: .cell).element(boundBy: 8).children(matching: .textField).element
+        textField2.tap()
+        textField2.clearAndEnterText(text: "http://localhost:8000/backend")
+        tablesQuery.buttons["Done"].tap()
+        
+        let textField3 = tablesQuery2.children(matching: .cell).element(boundBy: 6).children(matching: .textField).element
+        textField3.tap()
+        textField3.clearAndEnterText(text: "localhost")
+        tablesQuery2.staticTexts["GNS Host"].tap()
+        tablesQuery.staticTexts["Reload GNS Data"].tap()
+        
+
+        app.navigationBars["GNS Status"].buttons["Developer Settings"].tap()
+        app.navigationBars["Developer Settings"].buttons["About 1.0 (24)"].tap()
+        app.navigationBars["About 1.0 (24)"].buttons["Done"].tap()
+        
+        
+        
         
         let goLabel = app.otherElements["My Location"]
         //XCTAssertTrue(goLabel.exists)
