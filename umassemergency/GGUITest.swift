@@ -84,14 +84,17 @@ class GGUITest: XCTestCase {
         let gnsHostStaticText = tablesQuery.textFields["gnsServer"]
         gnsHostStaticText.swipeUp()
         gnsHostStaticText.clearAndEnterText(text: "localhost")
+        gnsHostStaticText.typeText("\n")
         
         let gnsPortStaticText = tablesQuery.textFields["gnsPort"]
         //gnsPortStaticText.swipeUp()
         gnsPortStaticText.clearAndEnterText(text: "25303")
+        gnsPortStaticText.typeText("\n")
         
         let backendStaticText = app.textFields["backendURL"]
         //backendStaticText.swipeUp()
         backendStaticText.clearAndEnterText(text: "http://localhost:8000/backend")
+        backendStaticText.typeText("\n")
         
         tablesQuery.staticTexts["Reload GNS Data"].tap()
         app.navigationBars["GNS Status"].buttons["Developer Settings"].tap()
