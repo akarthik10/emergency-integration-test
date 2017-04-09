@@ -571,6 +571,7 @@ static GGApp *instance = nil;
             
         }else if (gns.isConnecting) {
             
+            
             XLog(@"Connecting to GNS");
             
         }else if (gns.isLoadingAccount) {
