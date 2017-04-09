@@ -65,31 +65,28 @@ class GGUITest: XCTestCase {
         
         app.navigationBars["About 1.0 (24)"].buttons["Normal"].tap()
         
-        let tablesQuery2 = app.tables
-        let tablesQuery = tablesQuery2
+        let tablesQuery = app.tables
         tablesQuery.staticTexts["Developer Settings"].tap()
         tablesQuery.staticTexts["GNS"].tap()
+       
         
-        let textField = tablesQuery2.cells.containing(.button, identifier:"Done").children(matching: .textField).element
-        textField.tap()
+        let gnsHostStaticText = tablesQuery.textFields["gnsServer"]
+        gnsHostStaticText.swipeUp()
+        gnsHostStaticText.clearAndEnterText(text: "localhost")
         
-        textField.clearAndEnterText(text: "24503")
+        let gnsPortStaticText = tablesQuery.textFields["gnsPort"]
+        gnsPortStaticText.swipeUp()
+        gnsPortStaticText.clearAndEnterText(text: "25303")
         
-        let textField2 = tablesQuery2.children(matching: .cell).element(boundBy: 8).children(matching: .textField).element
-        textField2.tap()
-        textField2.clearAndEnterText(text: "http://localhost:8000/backend")
-        tablesQuery.buttons["Done"].tap()
+        let backendStaticText = tablesQuery.textFields["backendURL"]
+        backendStaticText.swipeUp()
+        backendStaticText.clearAndEnterText(text: "http://localhost:8000/backend")
         
-        let textField3 = tablesQuery2.children(matching: .cell).element(boundBy: 6).children(matching: .textField).element
-        textField3.tap()
-        textField3.clearAndEnterText(text: "localhost")
-        tablesQuery2.staticTexts["GNS Host"].tap()
         tablesQuery.staticTexts["Reload GNS Data"].tap()
-        
-
         app.navigationBars["GNS Status"].buttons["Developer Settings"].tap()
         app.navigationBars["Developer Settings"].buttons["About 1.0 (24)"].tap()
         app.navigationBars["About 1.0 (24)"].buttons["Done"].tap()
+        
         
         
         

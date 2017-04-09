@@ -206,6 +206,7 @@ typedef enum : NSUInteger {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         self.gnsHostTextField.frame = CGRectInset(cell.contentView.bounds, 50, 0);
         [cell.contentView addSubview:self.gnsHostTextField];
+        [self.gnsHostTextField setAccessibilityIdentifier:@"gnsServer"];
         return cell;
         
     } else if(indexPath.section == GNSStatusTableSectionGNSPort) {
@@ -220,6 +221,7 @@ typedef enum : NSUInteger {
         self.gnsPortDoneButton.frame = CGRectMake(0, 0, 70, cell.contentView.bounds.size.height);
         cell.accessoryView = self.gnsPortDoneButton;
         [cell.contentView addSubview:self.gnsPortTextField];
+        [self.gnsPortTextField setAccessibilityIdentifier:@"gnsPort"];
         return cell;
 
     } else if(indexPath.section == AboutTableSectionBackend) {
@@ -240,6 +242,7 @@ typedef enum : NSUInteger {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             self.backendHostTextField.frame = CGRectInset(cell.contentView.bounds, 50, 0);
             [cell.contentView addSubview:self.backendHostTextField];
+            [self.backendHostTextField setAccessibilityIdentifier:@"backendURL"];
             return cell;
         }
         return cell;
