@@ -88,7 +88,7 @@ class GGUITest: XCTestCase {
         
         let gnsPortStaticText = tablesQuery.textFields["gnsPort"]
         //gnsPortStaticText.swipeUp()
-        gnsPortStaticText.clearAndEnterText(text: "25303")
+        gnsPortStaticText.clearAndEnterText(text: "24503")
         gnsPortStaticText.typeText("\n")
         
         let backendStaticText = app.textFields["backendURL"]
