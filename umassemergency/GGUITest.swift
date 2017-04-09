@@ -58,6 +58,11 @@ class GGUITest: XCTestCase {
         
         
         app.navigationBars["UMass Emergency"].buttons["info"].tap()
+        
+        if app.navigationBars["About 1.0 (24)"].buttons["Developer"].exists {
+            app.navigationBars["About 1.0 (24)"].buttons["Developer"].tap()
+        }
+        
         app.navigationBars["About 1.0 (24)"].buttons["Normal"].tap()
         
         let tablesQuery2 = app.tables
@@ -68,7 +73,7 @@ class GGUITest: XCTestCase {
         let textField = tablesQuery2.cells.containing(.button, identifier:"Done").children(matching: .textField).element
         textField.tap()
         
-        textField.clearAndEnterText(text: "24303")
+        textField.clearAndEnterText(text: "24503")
         
         let textField2 = tablesQuery2.children(matching: .cell).element(boundBy: 8).children(matching: .textField).element
         textField2.tap()
