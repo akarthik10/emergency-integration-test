@@ -62,8 +62,8 @@
                </Test>
             </SkippedTests>
             <LocationScenarioReference
-               identifier = "../GRC.gpx"
-               referenceType = "0">
+               identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
+               referenceType = "1">
             </LocationScenarioReference>
          </TestableReference>
       </Testables>
@@ -102,7 +102,7 @@
       <AdditionalOptions>
       </AdditionalOptions>
       <LocationScenarioReference
-         identifier = "../grc.gpx"
+         identifier = "../GRC.gpx"
          referenceType = "0">
       </LocationScenarioReference>
    </LaunchAction>

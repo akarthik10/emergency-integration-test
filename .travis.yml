@@ -4,6 +4,7 @@ addons:
   firefox: latest
 before_install:
   - brew update
+  - brew install lyft/formulae/set-simulator-location
   - brew install mongodb
   - brew services start mongodb
   - brew install ant
