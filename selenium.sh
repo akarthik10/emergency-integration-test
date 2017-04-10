@@ -7,5 +7,5 @@ do
    [[ "${LOGLINE}" == *"Launch edu.umass.arun.UMassEmergency"* ]] && pkill -P $$ tail
 done
 echo "App launched, starting selenium test"
-set-simulator-location -c 42.3918247657524 -72.5269746780396
+set-simulator-location -c 42.3918248 -72.5269747
 python test.py
