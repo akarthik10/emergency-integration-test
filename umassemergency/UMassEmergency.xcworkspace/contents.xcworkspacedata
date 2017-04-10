@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:grc.gpx">
+   </FileRef>
+   <FileRef
       location = "group:UMassEmergency.xcodeproj">
    </FileRef>
    <FileRef
