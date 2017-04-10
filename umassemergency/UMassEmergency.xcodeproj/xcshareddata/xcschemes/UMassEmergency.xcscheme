@@ -42,6 +42,10 @@
                   Identifier = "WindContoursTests">
                </Test>
             </SkippedTests>
+            <LocationScenarioReference
+               identifier = "../grc.gpx"
+               referenceType = "0">
+            </LocationScenarioReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
@@ -58,7 +62,7 @@
                </Test>
             </SkippedTests>
             <LocationScenarioReference
-               identifier = "../grc.gpx"
+               identifier = "../GRC.gpx"
                referenceType = "0">
             </LocationScenarioReference>
          </TestableReference>
@@ -97,6 +101,10 @@
       </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
+      <LocationScenarioReference
+         identifier = "../grc.gpx"
+         referenceType = "0">
+      </LocationScenarioReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
