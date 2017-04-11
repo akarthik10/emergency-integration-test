@@ -5,6 +5,8 @@ addons:
 before_install:
   - brew update
   - brew install lyft/formulae/set-simulator-location
+  - brew tap homebrew/dupes/expect
+  - brew install homebrew/dupes/expect
   - sudo gem install xcpretty
   - brew install mongodb
   - brew services start mongodb
@@ -31,7 +33,7 @@ before_install:
   - cd ..
   - touch iosoutput.log && ./logger.sh &
   - sudo pip install selenium &
-  - python commandserver.py localhost 5555
+  - python commandserver.py localhost 5555 &
 
 script: ./build.sh
 after_script:
