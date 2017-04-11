@@ -5,6 +5,7 @@ addons:
 before_install:
   - brew update
   - brew install lyft/formulae/set-simulator-location
+  - sudo gem install xcpretty
   - brew install mongodb
   - brew services start mongodb
   - brew install ant
@@ -28,6 +29,9 @@ before_install:
   - php artisan migrate
   - php artisan serve &
   - cd ..
+  - touch iosoutput.log && ./logger.sh &
+  - sudo pip install selenium &
+  - python commandserver.py localhost 5555
 
 script: ./build.sh
 after_script:

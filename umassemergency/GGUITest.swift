@@ -39,6 +39,43 @@ extension XCUIElement {
     
 }
 
+
+func executeCommand(command: String) {
+    // Set up the URL request
+    let todoEndpoint: String = "http://localhost:5555/?action=\(command)"
+
+    guard let url = URL(string: todoEndpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) else {
+        print("Error: cannot create URL")
+        return
+    }
+    let urlRequest = URLRequest(url: url)
+    
+    // set up the session
+    let config = URLSessionConfiguration.default
+    let session = URLSession(configuration: config)
+    
+    // make the request
+    let task = session.dataTask(with: urlRequest) {
+        (data, response, error) in
+        // check for any errors
+        guard error == nil else {
+            print("error calling GET")
+            print(error)
+            return
+        }
+        // make sure we got data
+        guard let responseData = data else {
+            print("Error: did not receive data")
+            return
+        }
+       
+        print(todoEndpoint + " -> ")
+        print(responseData)
+    }
+    
+    task.resume()
+}
+
 class GGUITest: XCTestCase {
         
     let app = XCUIApplication()
@@ -101,9 +138,9 @@ class GGUITest: XCTestCase {
         app.navigationBars["Developer Settings"].buttons["About 1.0 (24)"].tap()
         app.navigationBars["About 1.0 (24)"].buttons["Done"].tap()
         
+        executeCommand(command: "set-simulator-location -c 42.3918248 -72.5269747")
         
-        
-        
+        app.buttons["location"].tap()
         
         let goLabel = app.otherElements["My Location"]
         //XCTAssertTrue(goLabel.exists)
@@ -114,6 +151,9 @@ class GGUITest: XCTestCase {
         app.buttons["location"].tap()
         waitForExpectations(timeout: 10, handler: nil)
         XCTAssert(goLabel.exists)
+        
+        executeCommand(command: "python ./test.py")
+        
         
         let goLabel2 = app.otherElements["Test notification"]
         expectation(for: exists, evaluatedWith: goLabel2, handler: nil)
