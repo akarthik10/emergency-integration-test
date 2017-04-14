@@ -44,6 +44,7 @@ promote_user(email)
 time.sleep(5)
 print("Reloading page..")
 driver.get("http://localhost:8000")
+driver.get_screenshot_as_file('/tmp/reloaded.png') 
 assert 'Create Alert' in driver.page_source
 
 type_into_field("Title", "Test notification")
@@ -53,4 +54,5 @@ driver.execute_script(polygon_script)
 print("Polygon script injection")
 driver.find_element_by_xpath("//button[contains(.,'Send')]").click()
 print("Notification sent")
+driver.get_screenshot_as_file('/tmp/sent.png')
 driver.close()

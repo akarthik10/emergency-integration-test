@@ -46,6 +46,8 @@ before_install:
   - python commandserver.py localhost 5555 &
 
 script: ./build.sh
+after_script:
+  ./image_upload.sh /tmp/*.png
 after_failure:
   - cat ~/Library/Logs/CoreSimulator/86B2CA7C-0247-4257-BFEA-8035084AF2CF/system.log
   - cat iosoutput.log
