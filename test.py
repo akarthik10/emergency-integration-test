@@ -15,7 +15,7 @@ polygon_script = "var polygon = L.polygon([ [42.40267150842343, -72.562808990478
 
 
 def promote_user(user):
-	command = "{ echo \"\$admin = new \App\Models\Role(); \$admin->name = 'admin'; \$admin->save(); \$admin = \App\Models\Role::where('name','=','admin')->first(); \$user = \App\Models\User::where('email','=','"+user+"')->first(); \$user->attachRole(\$admin); exit;\" ; cat ; } | php artisan tinker "
+	command = "{ echo \"\$admin = new \App\Models\Role(); \$admin->name = 'admin'; \$admin->save(); \$admin = \App\Models\Role::where('name','=','admin')->first(); \$user = \App\Models\User::where('email','=','"+user+"')->first(); \$user->attachRole(\$admin); exit;\" ; cat ; } | php em_portal/artisan tinker "
 	os.system(command)
 
 def type_into_field(name, value):
