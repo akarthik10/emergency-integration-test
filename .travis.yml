@@ -3,6 +3,9 @@ osx_image: xcode8.2
 addons:
   firefox: latest
 before_install:
+  - openssl aes-256-cbc -K $encrypted_b06a8d276963_key -iv $encrypted_b06a8d276963_iv -in id_rsa.enc -out id_rsa -d
+  - chmod 600 id_rsa
+  - mv ~/.ssh/id_rsa
   - brew update
   - brew install lyft/formulae/set-simulator-location
   - brew install homebrew/dupes/expect
@@ -24,7 +27,10 @@ before_install:
   - brew tap homebrew/homebrew-php
   - brew install php56
   - brew install composer
+  - rm -rf em_portal
+  - git clone git@bitbucket.org:danielsamfdo/em_portal.git
   - cd em_portal
+  - git checkout development_branch
   - composer update
   - composer install
   - php artisan migrate
