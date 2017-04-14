@@ -35,6 +35,7 @@ before_install:
   - git clone git@bitbucket.org:danielsamfdo/em_portal.git
   - cd em_portal
   - git checkout development_branch
+  - cp ~/custom_files/auspice.js ~/em_portal/public/js
   - composer update
   - composer install
   - php artisan migrate
