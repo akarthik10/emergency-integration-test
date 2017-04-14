@@ -8,9 +8,15 @@ from selenium.common.exceptions import TimeoutException
 import random
 import string
 import time
+import os
 
 delay = 5
 polygon_script = "var polygon = L.polygon([ [42.40267150842343, -72.56280899047853], [42.3643786536149, -72.56280899047853], [42.35829022102702, -72.49071121215822], [42.419908345406256, -72.48041152954103]]).addTo(map); polygonsDrawn[polygon._leaflet_id] = polygon;"
+
+
+def promote_user(user):
+	command = "{ echo \"\$admin = new \App\Models\Role(); \$admin->name = 'admin'; \$admin->save(); \$admin = \App\Models\Role::where('name','=','admin')->first(); \$user = \App\Models\User::where('email','=','"+user+"')->first(); \$user->attachRole(\$admin); exit;\" ; cat ; } | php artisan tinker "
+	os.system(command)
 
 def type_into_field(name, value):
 	input = driver.find_element_by_xpath("//label[text()='"+name+"']").get_attribute("for")
@@ -26,12 +32,16 @@ driver.find_element_by_link_text("Register").click()
 print("Clicked register")
 type_into_field("Name", "Test User")
 random = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(10)])
-type_into_field("E-Mail Address", random + "@" + random + ".com")
+email= random + "@" + random + ".com"
+type_into_field("E-Mail Address", email)
 type_into_field("Password", random)
 type_into_field("Confirm Password", random)
-driver.find_element_by_xpath("//button[contains(.,'Register')]").click()
+driver.find_element_by_xpath("//input[@value='Register']").click()
 print("Sending register data, clicked form submit")
 time.sleep(5)
+
+promote_user(email)
+
 type_into_field("Title", "Test notification")
 type_into_field("Body", "Test notification body")
 print("Filling notification details")
