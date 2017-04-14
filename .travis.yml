@@ -41,13 +41,13 @@ before_install:
   - php artisan migrate
   - php artisan serve &
   - cd ..
-  - touch iosoutput.log  && ./logger.sh &
+  - touch iosoutput.log # && ./logger.sh &
   - sudo pip install selenium &
   - python commandserver.py localhost 5555 &
 
 script: ./build.sh
 after_script:
-  ./image_upload.sh /tmp/*.png
+  ./image_upload.sh *.png
 after_failure:
   - cat ~/Library/Logs/CoreSimulator/86B2CA7C-0247-4257-BFEA-8035084AF2CF/system.log
   - cat iosoutput.log
