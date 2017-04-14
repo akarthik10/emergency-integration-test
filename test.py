@@ -15,7 +15,7 @@ polygon_script = "var polygon = L.polygon([ [42.40267150842343, -72.562808990478
 
 
 def promote_user(user):
-	command = "{ echo \"\$admin = new \App\Models\Role(); \$admin->name = 'admin'; \$admin->save(); \$admin = \App\Models\Role::where('name','=','admin')->first(); \$user = \App\Models\User::where('email','=','"+user+"')->first(); \$user->attachRole(\$admin); exit;\" ; cat ; } | php em_portal/artisan tinker "
+	command = "cd em_portal; { echo \"\$admin = new \App\Models\Role(); \$admin->name = 'admin'; \$admin->save(); \$admin = \App\Models\Role::where('name','=','admin')->first(); \$user = \App\Models\User::where('email','=','"+user+"')->first(); \$user->attachRole(\$admin); exit;\" ; cat ; } | php artisan tinker; cd ..; "
 	os.system(command)
 
 def type_into_field(name, value):
@@ -37,10 +37,13 @@ type_into_field("E-Mail Address", email)
 type_into_field("Password", random)
 type_into_field("Confirm Password", random)
 driver.find_element_by_xpath("//input[@value='Register']").click()
-print("Sending register data, clicked form submit")
+print("Sending register data, clicked form submit..")
 time.sleep(5)
-
+print("Promoting user to admin..")
 promote_user(email)
+print("Reloading page..")
+driver.get("http://localhost:8000")
+assert 'Create Alert' in driver.page_source
 
 type_into_field("Title", "Test notification")
 type_into_field("Body", "Test notification body")
