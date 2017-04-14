@@ -21,7 +21,7 @@ before_install:
   - GIT_CURL_VERBOSE=1 git clone --depth=1 https://github.com/MobilityFirst/GNS
   - cd GNS
   - ant
-  - ./bin/gpServer.sh  start all
+  - ./bin/gpServer.sh -Djava.util.logging.config.file=conf/logging.gns.debug.properties start all
   - cd ..
   - brew install mysql
   - mysql.server start

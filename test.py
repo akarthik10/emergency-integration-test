@@ -22,6 +22,7 @@ def type_into_field(name, value):
 	input = driver.find_element_by_xpath("//label[text()='"+name+"']").get_attribute("for")
 	driver.find_element_by_id(input).send_keys(value)
 
+
 driver = webdriver.Firefox(executable_path=r'bin/geckodriver')
 driver.get("http://localhost:8000")
 assert 'Register' in driver.page_source
