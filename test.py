@@ -41,6 +41,7 @@ print("Sending register data, clicked form submit..")
 time.sleep(5)
 print("Promoting user to admin..")
 promote_user(email)
+time.sleep(5)
 print("Reloading page..")
 driver.get("http://localhost:8000")
 assert 'Create Alert' in driver.page_source
