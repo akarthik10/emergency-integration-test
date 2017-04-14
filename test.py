@@ -9,14 +9,14 @@ import random
 import string
 import time
 import os
+import subprocess
 
 delay = 5
 polygon_script = "var polygon = L.polygon([ [42.40267150842343, -72.56280899047853], [42.3643786536149, -72.56280899047853], [42.35829022102702, -72.49071121215822], [42.419908345406256, -72.48041152954103]]).addTo(map); polygonsDrawn[polygon._leaflet_id] = polygon;"
 
 
 def promote_user(user):
-	command = "cd em_portal; { echo \"\$admin = new \App\Models\Role(); \$admin->name = 'admin'; \$admin->save(); \$admin = \App\Models\Role::where('name','=','admin')->first(); \$user = \App\Models\User::where('email','=','"+user+"')->first(); \$user->attachRole(\$admin); exit;\" ; cat ; } | php artisan tinker; cd ..; "
-	os.system(command)
+	subprocess.Popen(["./promote.sh"])
 
 def type_into_field(name, value):
 	input = driver.find_element_by_xpath("//label[text()='"+name+"']").get_attribute("for")
