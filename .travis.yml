@@ -41,7 +41,7 @@ before_install:
   - php artisan migrate
   - php artisan serve &
   - cd ..
-  - touch iosoutput.log # && ./logger.sh &
+  - touch iosoutput.log  && ./logger.sh &
   - sudo pip install selenium &
   - python commandserver.py localhost 5555 &
 
