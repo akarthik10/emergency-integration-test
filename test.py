@@ -16,7 +16,7 @@ polygon_script = "var polygon = L.polygon([ [42.40267150842343, -72.562808990478
 
 
 def promote_user(user):
-	subprocess.Popen(["./promote.sh"])
+	subprocess.Popen(["./promote.sh", user])
 
 def type_into_field(name, value):
 	input = driver.find_element_by_xpath("//label[text()='"+name+"']").get_attribute("for")
