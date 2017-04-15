@@ -160,13 +160,13 @@ class GGUITest: XCTestCase {
         expectation(for: exists, evaluatedWith: goLabel2, handler: nil)
         
         app.maps.element.pinch(withScale: 0.05, velocity: -0.05)
-        
+        executeCommand(command: "xcrun simctl io booted screenshot")
         //app.buttons["location"].tap()
-        waitForExpectations(timeout: 1200, handler: nil)
+        waitForExpectations(timeout: 180, handler: nil)
         XCTAssert(goLabel2.exists)
         
         app.buttons["list"].tap()
-        
+        executeCommand(command: "xcrun simctl io booted screenshot")
         
     }
     
