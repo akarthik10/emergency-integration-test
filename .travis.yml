@@ -21,7 +21,7 @@ before_install:
   - GIT_CURL_VERBOSE=1 git clone --depth=1 https://github.com/MobilityFirst/GNS
   - cd GNS
   - ant
-  - ./bin/gpServer.sh -Djava.util.logging.config.file=conf/logging.gns.debug.properties start all
+  - ./bin/gpServer.sh start all
   - cd ..
   - brew install mysql
   - mysql.server start
@@ -49,5 +49,5 @@ script: ./build.sh
 after_script:
   ./image_upload.sh *.png
 after_failure:
-  - cat ~/Library/Logs/CoreSimulator/86B2CA7C-0247-4257-BFEA-8035084AF2CF/system.log
+  - cat ~/Library/Logs/CoreSimulator/**/system.log
   - cat iosoutput.log
