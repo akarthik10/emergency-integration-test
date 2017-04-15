@@ -47,6 +47,9 @@ before_install:
   - touch iosoutput.log  && ./logger.sh &
   - sudo pip install selenium &
   - python commandserver.py localhost 5555 &
+  - rm -rf umassemergency
+  - git clone git@bitbucket.org:goerkem/umassemergency.git
+  - git checkout testing_karthik
 
 script: ./build.sh
 
