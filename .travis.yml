@@ -46,8 +46,10 @@ before_install:
   - python commandserver.py localhost 5555 &
 
 script: ./build.sh
+
 after_script:
-  ./image_upload.sh *.png
+  - xcrun simctl io booted screenshot
+  - ./image_upload.sh *.png
 after_failure:
   - cat ~/Library/Logs/CoreSimulator/**/system.log
   - cat iosoutput.log
