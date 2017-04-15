@@ -34,7 +34,10 @@ before_install:
   - rm -rf em_portal
   - git clone git@bitbucket.org:danielsamfdo/em_portal.git
   - cd em_portal
-  - git checkout staging
+  - cp .env ../custom_files/.env
+  - git checkout development_branch
+  - git checkout master
+  - cp ../custom_files/.env .
   - cp ../custom_files/auspice.js public/js/
   - composer update
   - composer install
