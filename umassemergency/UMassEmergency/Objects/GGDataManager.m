@@ -72,7 +72,10 @@
         for (NSDictionary *alert in newAlerts) {
             GGHazard *hazard = [GGHazard hazardWithDictionary:alert];
             [self addHazard:hazard];
+            XLog( @"%@", alert );
         }
+        
+        
 
         self.lastAlertUpdateDate = [NSDate date];
         self.downloading = NO;
