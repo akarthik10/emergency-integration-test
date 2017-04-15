@@ -36,7 +36,7 @@ before_install:
   - cd em_portal
   - git checkout development_branch
   - cp .env ../custom_files/.env
-  - git checkout master
+  - git checkout 4cdbcee #This works, change later
   - cp ../custom_files/.env .
   - cp ../custom_files/auspice.js public/js/
   - composer update
