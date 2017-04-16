@@ -12,19 +12,17 @@ cd ..
    do
       env NSUnbufferedIO=YES xcodebuild -configuration Debug -workspace umassemergency/UMassEmergency.xcworkspace -scheme UMassEmergency -sdk iphonesimulator -destination platform="iOS Simulator",OS=10.2,name="iPhone 7 Plus" build test SYMROOT=$(PWD)/build | tee iosoutput.log | xcpretty
       echo "Exit status is $?"
-      grep "TEST FAILED" iosoutput.log
-      echo "==START=="
-      cat iosoutput.log
-      echo "==END=="
-      if grep -q "TEST FAILED" "iosoutput.log"; then
+
+      if grep -q "TEST SUCCEEDED" iosoutput.log ; then
          echo "Exiting with success"
       	exit 0
       fi
       n=$[$n+1]
       echo "Retrying again.. $n "
-      killall -9 Simulator
-      killall -9 com.apple.CoreSimulator.CoreSimulatorService
-      sleep 15
+
+      osascript -e 'tell application "iOS Simulator" to quit'
+      osascript -e 'tell application "Simulator" to quit'
+      xcrun simctl erase all
 
    done
    echo "Retry failed, exiting.."
