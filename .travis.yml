@@ -35,9 +35,6 @@ before_install:
   - git clone git@bitbucket.org:danielsamfdo/em_portal.git
   - cd em_portal
   - git checkout development_branch
-  - cp .env ../custom_files/.env
-  - git checkout 4cdbcee #This works, change later
-  - cp ../custom_files/.env .
   - cp ../custom_files/auspice.js public/js/
   - composer update
   - composer install
