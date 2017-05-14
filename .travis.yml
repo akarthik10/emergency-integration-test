@@ -47,7 +47,7 @@ before_install:
   - rm -rf umassemergency
   - git clone git@bitbucket.org:goerkem/umassemergency.git
   - cd umassemergency
-  - git checkout testing_karthik
+  - git checkout develop
   - cd ..
 
 script: ./build.sh
