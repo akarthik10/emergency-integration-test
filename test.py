@@ -52,8 +52,10 @@ assert 'Create Alert' in driver.page_source
 
 type_into_field("Title", "Test notification")
 type_into_field("Body", "Test notification body")
+time.sleep(5)
 print("Filling notification details")
 driver.execute_script(polygon_script)
+time.sleep(5)
 print("Polygon script injection")
 driver.find_element_by_xpath("//button[contains(.,'Send')]").click()
 print("Notification sent")
