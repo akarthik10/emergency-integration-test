@@ -3,7 +3,7 @@
 
 
 cd umassemergency
-sudo gem update -n /usr/local/bin cocoapods
+sudo gem install cocoapods
 pod install
 cd ..
 
