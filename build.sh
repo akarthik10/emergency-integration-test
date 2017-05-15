@@ -4,6 +4,7 @@
 
 cd umassemergency
 sudo gem install cocoapods
+pod repo update
 pod install
 cd ..
 
