@@ -48,7 +48,7 @@ time.sleep(1)
 
 i = 0
 done = False
-while (done or i < 10):
+while (not done or i < 10):
 	print("Reloading page..")
 	driver.get("http://localhost:8000")
 	driver.get_screenshot_as_file('reloaded'+str(i)+'.png') 
