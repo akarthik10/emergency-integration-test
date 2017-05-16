@@ -36,5 +36,5 @@ python commandserver.py localhost 5555 &
 rm -rf umassemergency
 git clone git@bitbucket.org:goerkem/umassemergency.git
 cd umassemergency
-git checkout testing_karthik
+git checkout develop
 cd ..
