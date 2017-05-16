@@ -15,8 +15,6 @@ before_install:
 
 script: ./build.sh
 
-after_script:
-  - ./image_upload.sh *.png
 after_failure:
   - cat ~/Library/Logs/CoreSimulator/**/system.log
   - cat iosoutput.log
