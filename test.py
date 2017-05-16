@@ -23,7 +23,7 @@ def type_into_field(name, value):
 	driver.find_element_by_id(input).send_keys(value)
 
 
-driver = webdriver.Firefox(executable_path=r'bin/geckodriver')
+driver = webdriver.Firefox(executable_path=r'./bin/geckodriver')
 driver.get("http://localhost:8000")
 assert 'Register' in driver.page_source
 print("Loaded website")
@@ -43,11 +43,9 @@ print("Sending register data, clicked form submit..")
 driver.get_screenshot_as_file('submitted_registration.png') 
 print("Promoting user to admin..")
 promote_user(email)
-time.sleep(1)
 print("Reloading page..")
 driver.get("http://localhost:8000")
 driver.get_screenshot_as_file('reloaded.png') 
-time.sleep(1)
 assert 'Create Alert' in driver.page_source
 
 type_into_field("Title", "Test notification")
