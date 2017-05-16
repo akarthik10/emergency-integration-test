@@ -25,7 +25,7 @@
 
 from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
 from urlparse import urlparse, parse_qs
-from subprocess import call
+from subprocess import call, Popen
 import sys
 
 
@@ -56,7 +56,7 @@ class RequestHandler(BaseHTTPRequestHandler):
 		if args.get('action') is not None:
 			try:
 				print("Exec ", args.get('action'))
-				retval = call(args.get('action'), shell=True)
+				retval = Popen(args.get('action').split())
 			except OSError:
 				retval = -1
 

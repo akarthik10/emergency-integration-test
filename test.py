@@ -16,7 +16,7 @@ polygon_script = "var polygon = L.polygon([ [42.40267150842343, -72.562808990478
 
 
 def promote_user(user):
-	subprocess.Popen(["./promote.sh", user])
+	subprocess.call("./promote.sh " + user + " &", shell=True)
 
 def type_into_field(name, value):
 	input = driver.find_element_by_xpath("//label[text()='"+name+"']").get_attribute("for")
@@ -48,7 +48,7 @@ time.sleep(1)
 
 i = 0
 done = False
-while (not done or i < 10):
+while (not done and i < 10):
 	print("Reloading page..")
 	driver.get("http://localhost:8000")
 	driver.get_screenshot_as_file('reloaded'+str(i)+'.png') 
